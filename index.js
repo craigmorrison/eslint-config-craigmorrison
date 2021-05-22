@@ -312,8 +312,6 @@ module.exports = {
     'no-console': 'error',
     // No debugger keyword (probably a mistake to commit)
     'no-debugger': 'error',
-    // Require strict mode (implicit when using ES6 modules)
-    'strict': 'error',
 
     /*
      * Redundant: rules which are made redundant by less specific rules
@@ -383,6 +381,8 @@ module.exports = {
     'no-ternary': 'off',
     // Don't care if the is specified or not, when parsing decimals (old ES5 problem)
     'radix': 'off',
+    // Complex to use in a mixed codebase (Node & ES2015+)
+    'strict': 'off',
 
     /*
      * Stylistic rules
