@@ -27,7 +27,7 @@ module.exports = {
     /*
      * New JSX Pragma Rules
      */
-    'react/jsx-uses-react': 'error',
-    'react/jsx-uses-vars': 'error'
+    'react/jsx-uses-react': 'off',
+    'react/react-in-jsx-scope': 'off'
   }
 };
