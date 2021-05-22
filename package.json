@@ -1,0 +1,39 @@
+{
+  "name": "@craigmorrison/eslint-config",
+  "version": "0.1.0",
+  "description": "Craig Morrison's personal ESLint config",
+  "author": "Craig Morrison",
+  "license": "MIT",
+  "homepage": "https://github.com/craigmorrison/eslint-config-craigmorrison#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/craigmorrison/eslint-config-craigmorrison.git"
+  },
+  "bugs": {
+    "url": "https://github.com/craigmorrison/eslint-config-craigmorrison/issues"
+  },
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "ESLint",
+    "config"
+  ],
+  "scripts": {
+    "build": "node ./config/build.mjs",
+    "format": "prettier --write ."
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "none",
+    "quoteProps": "consistent"
+  },
+  "devDependencies": {
+    "eslint-find-rules": "^3.6.1",
+    "prettier": "^2.3.0"
+  },
+  "peerDependencies": {
+    "eslint": "^7.27.0"
+  }
+}
