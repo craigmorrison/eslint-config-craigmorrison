@@ -18,5 +18,16 @@ module.exports = {
     'plugin:jsx-a11y/recommended'
   ],
   plugins: ['react', 'react-hooks', 'jsx-a11y'],
-  rules: {}
+  settings: {
+    react: {
+      version: 'detect'
+    }
+  },
+  rules: {
+    /*
+     * New JSX Pragma Rules
+     */
+    'react/jsx-uses-react': 'error',
+    'react/jsx-uses-vars': 'error'
+  }
 };
