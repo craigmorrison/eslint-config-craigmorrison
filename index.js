@@ -2,8 +2,7 @@
 
 module.exports = {
   env: {
-    browser: true,
-    node: true
+    es2021: true
   },
   rules: {
     /*
@@ -396,8 +395,6 @@ module.exports = {
     'no-tabs': 'error',
     // Dot notation should be preferred where possible
     'dot-notation': 'error',
-    // Generators should have a single space after the star
-    'generator-star-spacing': 'error',
     // Variable and property names must be at least 3 chars long
     'id-length': ['error', { min: 3 }],
     // Properties of a class must be spaced with blank lines
