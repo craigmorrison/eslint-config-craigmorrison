@@ -10,11 +10,30 @@ module.exports = {
     node: true,
     es2021: true
   },
-  extends: ['eslint:recommended'],
+  extends: ['eslint:recommended', 'prettier'],
   rules: {
     /*
-     * Basic rules
+     * ========
+     * Warnings
+     * ========
      */
+    // Warning comment patterns, for example: "// TODO: Implement later"
+    'no-warning-comments': [
+      'warn',
+      { terms: ['TODO', 'FIX', 'FIXME'], location: 'start' }
+    ],
+
+    /*
+     * ===========
+     * Basic rules
+     * ===========
+     */
+    // No class assignments
+    'no-class-assign': 'error',
+    // No return in class constructors
+    'no-constructor-return': 'error',
+    // Class members must be unique
+    'no-dupe-class-members': 'error',
     // Constructors of classes that are extending should use super()
     'constructor-super': 'error',
     // Getters and setters need to be defined in pairs
@@ -23,22 +42,16 @@ module.exports = {
     'getter-return': 'error',
     // Getters need to be defined before setters
     'grouped-accessor-pairs': ['error', 'getBeforeSet'],
-    // Array method callbacks must have a return
-    'array-callback-return': 'error',
-    // Braces are returned for arrow functions where it is less ambiguous
-    'arrow-body-style': [
-      'error',
-      'as-needed',
-      {
-        requireReturnForObjectLiteral: false
-      }
-    ],
-    // Parenthesis should be used to clarify arrow functions
-    'no-confusing-arrow': ['error', { allowParens: false }],
-    // Don't allow the new keyword with primitive wrappers (e.g. String())
-    'no-new-wrappers': 'error',
     // Class methods should use the 'this' keyword, or be static
     'class-methods-use-this': 'error',
+    // No use of this outside of classes and similar objects
+    'no-invalid-this': 'error',
+    // No Array constructors
+    'no-array-constructor': 'error',
+    // Array method callbacks must have a return
+    'array-callback-return': 'error',
+    // Don't allow the new keyword with primitive wrappers (e.g. String())
+    'no-new-wrappers': 'error',
     // Returns within a statement or function should either return a value or not
     'consistent-return': 'error',
     // Require default in all switch statements
@@ -49,6 +62,10 @@ module.exports = {
     'default-param-last': 'error',
     // Don't use the undefined variable
     'no-undef': 'error',
+    // Don't use var for assignments (use let or const)
+    'no-var': 'error',
+    // Don't use delete on variables, only properties
+    'no-delete-var': 'error',
     // Prefer const over let or var
     'prefer-const': 'error',
     // Require type checking equality (=== or !==, not == or !==)
@@ -59,8 +76,6 @@ module.exports = {
     'no-iterator': 'error',
     // Define functions as declarations, not assignments
     'func-style': ['error', 'declaration', { allowArrowFunctions: true }],
-    // Don't use var for assignments (use let or const)
-    'no-var': 'error',
     // No assignments on return
     'no-return-assign': 'error',
     // No yoda conditions (harder to read, and no necessary)
@@ -69,8 +84,6 @@ module.exports = {
     'guard-for-in': 'error',
     // Disallow alert()
     'no-alert': 'error',
-    // No Array constructors
-    'no-array-constructor': 'error',
     // Promise executor functions must be synchronous
     'no-async-promise-executor': 'error',
     // No await inside loops
@@ -81,8 +94,6 @@ module.exports = {
     'no-caller': 'error',
     // No declarations in case statements without a block
     'no-case-declarations': 'error',
-    // No class assignments
-    'no-class-assign': 'error',
     // No comparisons against negative zero
     'no-compare-neg-zero': 'error',
     // No assignments in a conditional
@@ -91,18 +102,14 @@ module.exports = {
     'no-const-assign': 'error',
     // No constant conditions
     'no-constant-condition': 'error',
-    // No return in class constructors
-    'no-constructor-return': 'error',
+
     // No continue keyword
     'no-continue': 'error',
-    // Don't use delete on variables, only properties
-    'no-delete-var': 'error',
     // Require regex literals to escape division operators
     'no-div-regex': 'error',
     // Function arguments must be unique
     'no-dupe-args': 'error',
-    // Class members must be unique
-    'no-dupe-class-members': 'error',
+
     // Conditions in if-else chains must be unique
     'no-dupe-else-if': 'error',
     // Property keys must be unique in object literals
@@ -115,8 +122,7 @@ module.exports = {
     'no-else-return': 'error',
     // No empty blocks
     'no-empty': 'error',
-    // No empty character classes in regular expressions
-    'no-empty-character-class': 'error',
+
     // No empty functions
     'no-empty-function': 'error',
     // No empty destructuring patterns
@@ -149,10 +155,12 @@ module.exports = {
     'no-implied-eval': 'error',
     // No reassignment of imported bindings
     'no-import-assign': 'error',
+    // No empty character classes in regular expressions
+    'no-empty-character-class': 'error',
     // No invalid regular expression strings in RegExp constructors
     'no-invalid-regexp': 'error',
-    // No use of this outside of classes and similar objects
-    'no-invalid-this': 'error',
+    // Disallow multiple spaces in regular expression literals
+    'no-regex-spaces': 'error',
     // No unusual whitespace characters
     'no-irregular-whitespace': 'error',
     // No labels that are variable names
@@ -210,8 +218,6 @@ module.exports = {
     'no-prototype-builtins': 'off',
     // No variable redeclaration
     'no-redeclare': 'error',
-    // Disallow multiple spaces in regular expression literals
-    'no-regex-spaces': 'error',
     // No javascript: URLs
     'no-script-url': 'error',
     // Use isNaN rather than comparators to check NaN
@@ -228,8 +234,6 @@ module.exports = {
     'no-self-assign': 'error',
     // No self-comparisons (e.g. foo === foo)
     'no-self-compare': 'error',
-    // No comma operator
-    'no-sequences': 'error',
     // Use template literals over concatenation
     'prefer-template': 'error',
     // Use spread operator over .apply()
@@ -300,32 +304,15 @@ module.exports = {
     'require-await': 'error',
     // No generators without yield
     'require-yield': 'error',
-
-    /*
-     * Warnings
-     */
-    // Warning comment patterns, for example: "// TODO: Implement later"
-    'no-warning-comments': [
-      'warn',
-      { terms: ['TODO', 'FIX', 'FIXME'], location: 'start' }
-    ],
-
-    /*
-     * Situational
-     */
-    // No console object by default (can re-enable for Node.js)
-    'no-console': 'error',
     // No debugger keyword (probably a mistake to commit)
     'no-debugger': 'error',
+    // No console use by default (re-enable for Node.js on file/project level)
+    'no-console': 'error',
 
     /*
-     * Redundant: rules which are made redundant by less specific rules
-     */
-    // Vars aren't allowed, no need to check their scope
-    'block-scoped-var': 'off',
-
-    /*
+     * ============
      * Decide Later
+     * ============
      */
     // Not sure, wait until imports libary is also used
     'sort-imports': 'off',
@@ -339,7 +326,121 @@ module.exports = {
     'func-names': ['error', 'as-needed'],
 
     /*
-     * Unused rules
+     * ================================================================
+     * Redundant: rules which are made redundant by less specific rules
+     * ================================================================
+     */
+    // Vars aren't allowed, no need to check their scope
+    'block-scoped-var': 'off',
+
+    /*
+     * ===============
+     * Stylistic Rules
+     * ===============
+     */
+    // Require camelCase variable names
+    'camelcase': 'error',
+    // Require constructor names to use PascalCase
+    'new-cap': 'error',
+    // Dot notation should be preferred where possible
+    'dot-notation': 'error',
+    // Variable and property names must be at least 3 chars long
+    'id-length': ['error', { min: 3 }],
+    // Properties of a class must be spaced with blank lines
+    'lines-between-class-members': ['error', 'always'],
+    // Only define a single class per file
+    'max-classes-per-file': ['error', 1],
+    // Blocks cannot be more than 4 (default) deep
+    'max-depth': 'error',
+    // Limit the number of nested callbacks
+    'max-nested-callbacks': ['error', 5],
+    // Limit the number of parameters a function can have
+    'max-params': ['error', 3],
+    // Only one statement per line
+    'max-statements-per-line': ['error', { max: 1 }],
+    // Comments don't need to be capitalized
+    'capitalized-comments': 'off',
+    // Used the 'starred-block' comment style
+    'multiline-comment-style': ['error', 'starred-block'],
+    // Always space before comments
+    'spaced-comment': ['error', 'always'],
+    // No dangling underscores in identifiers
+    'no-underscore-dangle': 'error',
+    // No restricted global list
+    'no-restricted-globals': 'off',
+    // No restricted property name list
+    'no-restricted-properties': 'off',
+    // No restricted import name list
+    'no-restricted-imports': 'off',
+    // No restricted export name list
+    'no-restricted-exports': 'off',
+    // Prefer object literal shorthands
+    'object-shorthand': ['error', 'consistent-as-needed'],
+    // No operator shorthands (x = x / y) over (x /= y)
+    'operator-assignment': ['error', 'never'],
+    // Prefer the ES2016 exponential operator over Math.pow()
+    'prefer-exponentiation-operator': 'error',
+    // Prefer ES2018 capture groups
+    'prefer-named-capture-group': 'error',
+    // Prefer numeric (decimal) literals
+    'prefer-numeric-literals': 'error',
+    // Prefer object spread over Object.assign()
+    'prefer-object-spread': 'error',
+    // Prefer regex literals where possible
+    'prefer-regex-literals': 'error',
+
+    /*
+     * =========================================
+     * Rules with specific Prettier interactions
+     * =========================================
+     */
+    /*
+     * Arrow function style
+     * Incompatible with eslint-plugin-prettier (but ok with --fix and --write)
+     */
+    // Require braces (only when it improves clarity)
+    'arrow-body-style': [
+      'error',
+      'as-needed',
+      {
+        requireReturnForObjectLiteral: false
+      }
+    ],
+    // Prefer arrow functions for callbacks
+    'prefer-arrow-callback': 'error',
+    /*
+     * Brace Style
+     * Incompatible with Prettier with "multi-line" or "multi-or-nest" options
+     */
+    // Require braces even when they are optional (e.g. single line if)
+    'curly': ['error', 'all'],
+    /*
+     * Parenthesis should be used to clarify arrow functions
+     * Incompatible with Prettier is allowParens is true
+     */
+    'no-confusing-arrow': ['error', { allowParens: false }],
+    /*
+     * No unexpected tab characters
+     * Use "allowIndentationTabs: true" to let Prettier handle indentation rules
+     */
+    'no-tabs': ['error', { allowIndentationTabs: true }],
+    /*
+     * Catch comma operator issues with non-restricted-syntax over no-sequences
+     */
+    'no-sequences': 'off',
+    'no-restricted-syntax': [
+      'error',
+      {
+        selector: 'SequenceExpression',
+        message:
+          'The comma operator is confusing and a common mistake. Don’t use it!'
+      }
+    ],
+
+    /*
+     * ============
+     * Unused Rules
+     * ============
      */
     // Cyclomatic complexity limit not set
     'complexity': 'off',
@@ -387,148 +488,6 @@ module.exports = {
     // Don't care if the is specified or not, when parsing decimals (old ES5 problem)
     'radix': 'off',
     // Complex to use in a mixed codebase (Node & ES2015+)
-    'strict': 'off',
-
-    /*
-     * Stylistic rules
-     */
-    // Require braces even when they are optional (e.g. single line if)
-    'curly': ['error', 'all'],
-    // Require camelCase variable names
-    'camelcase': 'error',
-    // Require constructor names to use PascalCase
-    'new-cap': 'error',
-    // No unexpected tab characters
-    'no-tabs': 'error',
-    // Dot notation should be preferred where possible
-    'dot-notation': 'error',
-    // Variable and property names must be at least 3 chars long
-    'id-length': ['error', { min: 3 }],
-    // Properties of a class must be spaced with blank lines
-    'lines-between-class-members': ['error', 'always'],
-    // Only define a single class per file
-    'max-classes-per-file': ['error', 1],
-    // Blocks cannot be more than 4 (default) deep
-    'max-depth': 'error',
-    // Limit the number of nested callbacks
-    'max-nested-callbacks': ['error', 5],
-    // Limit the number of parameters a function can have
-    'max-params': ['error', 3],
-    // Only one statement per line
-    'max-statements-per-line': ['error', { max: 1 }],
-    // Comments don't need to be capitalized
-    'capitalized-comments': 'off',
-    // Used the 'starred-block' comment style
-    'multiline-comment-style': ['error', 'starred-block'],
-    // Always space before comments
-    'spaced-comment': ['error', 'always'],
-    // No dangling underscores in identifiers
-    'no-underscore-dangle': 'error',
-    // No restricted global list
-    'no-restricted-globals': 'off',
-    // No restricted property name list
-    'no-restricted-properties': 'off',
-    // No restricted import name list
-    'no-restricted-imports': 'off',
-    // No restricted export name list
-    'no-restricted-exports': 'off',
-    // No restricted syntax list
-    'no-restricted-syntax': 'off',
-    // Prefer object literal shorthands
-    'object-shorthand': ['error', 'consistent-as-needed'],
-    // No operator shorthands (x = x / y) over (x /= y)
-    'operator-assignment': ['error', 'never'],
-    // Prefer arrow functions for callbacks
-    'prefer-arrow-callback': 'error',
-    // Prefer the ES2016 exponential operator over Math.pow()
-    'prefer-exponentiation-operator': 'error',
-    // Prefer ES2018 capture groups
-    'prefer-named-capture-group': 'error',
-    // Prefer numeric (decimal) literals
-    'prefer-numeric-literals': 'error',
-    // Prefer object spread over Object.assign()
-    'prefer-object-spread': 'error',
-    // Prefer regex literals where possible
-    'prefer-regex-literals': 'error',
-
-    /*
-     * Disable stylistic rules which clash with Prettier
-     */
-    'array-bracket-newline': 'off',
-    'array-bracket-spacing': 'off',
-    'array-element-newline': 'off',
-    'arrow-parens': 'off',
-    'arrow-spacing': 'off',
-    'block-spacing': 'off',
-    'brace-style': 'off',
-    'comma-dangle': 'off',
-    'comma-spacing': 'off',
-    'comma-style': 'off',
-    'computed-property-spacing': 'off',
-    'dot-location': 'off',
-    'eol-last': 'off',
-    'func-call-spacing': 'off',
-    'function-call-argument-newline': 'off',
-    'function-paren-newline': 'off',
-    'generator-star': 'off',
-    'generator-star-spacing': 'off',
-    'implicit-arrow-linebreak': 'off',
-    'indent': 'off',
-    'jsx-quotes': 'off',
-    'key-spacing': 'off',
-    'keyword-spacing': 'off',
-    'linebreak-style': 'off',
-    'lines-around-comment': 'off',
-    'max-len': 'off',
-    'multiline-ternary': 'off',
-    'newline-per-chained-call': 'off',
-    'new-parens': 'off',
-    'no-arrow-condition': 'off',
-    'no-comma-dangle': 'off',
-    'no-extra-parens': 'off',
-    'no-extra-semi': 'off',
-    'no-floating-decimal': 'off',
-    'no-mixed-operators': 'off',
-    'no-mixed-spaces-and-tabs': 'off',
-    'no-multi-spaces': 'off',
-    'no-multiple-empty-lines': 'off',
-    'no-reserved-keys': 'off',
-    'no-space-before-semi': 'off',
-    'no-trailing-spaces': 'off',
-    'no-unexpected-multiline': 'off',
-    'no-whitespace-before-property': 'off',
-    'no-wrap-func': 'off',
-    'nonblock-statement-body-position': 'off',
-    'object-curly-newline': 'off',
-    'object-curly-spacing': 'off',
-    'object-property-newline': 'off',
-    'one-var-declaration-per-line': 'off',
-    'operator-linebreak': 'off',
-    'padded-blocks': 'off',
-    'quotes': 'off',
-    'quote-props': 'off',
-    'rest-spread-spacing': 'off',
-    'semi': 'off',
-    'semi-spacing': 'off',
-    'semi-style': 'off',
-    'space-after-function-name': 'off',
-    'space-after-keywords': 'off',
-    'space-before-blocks': 'off',
-    'space-before-function-paren': 'off',
-    'space-before-function-parentheses': 'off',
-    'space-before-keywords': 'off',
-    'space-in-brackets': 'off',
-    'space-in-parens': 'off',
-    'space-infix-ops': 'off',
-    'space-return-throw-case': 'off',
-    'space-unary-ops': 'off',
-    'space-unary-word-ops': 'off',
-    'switch-colon-spacing': 'off',
-    'template-curly-spacing': 'off',
-    'template-tag-spacing': 'off',
-    'unicode-bom': 'off',
-    'wrap-iife': 'off',
-    'wrap-regex': 'off',
-    'yield-star-spacing': 'off'
+    'strict': 'off'
   }
 };
