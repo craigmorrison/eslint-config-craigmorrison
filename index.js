@@ -360,8 +360,6 @@ module.exports = {
     'max-statements-per-line': ['error', { max: 1 }],
     // Comments don't need to be capitalized
     'capitalized-comments': 'off',
-    // Used the 'starred-block' comment style
-    'multiline-comment-style': ['error', 'starred-block'],
     // Always space before comments
     'spaced-comment': ['error', 'always'],
     // No dangling underscores in identifiers
@@ -466,6 +464,8 @@ module.exports = {
     'no-control-regex': 'off',
     // Allow inline comments
     'no-inline-comments': 'off',
+    // Allow any comment style (makes it easier to use different IDE settings)
+    'multiline-comment-style': 'off',
     // Not necessary with block scoped functions
     'no-inner-declarations': 'off',
     // Allow nested "else if"
