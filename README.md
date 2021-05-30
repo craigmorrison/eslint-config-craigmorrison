@@ -4,8 +4,10 @@
 
 ### Install
 
+Install the package, and it's peer dependencies.
+
 ```shell
-npm install @craigmorrison/eslint-config --save-dev
+npm install eslint prettier @craigmorrison/eslint-config --save-dev
 ```
 
 ### Configure with ESLint
