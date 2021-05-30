@@ -29,9 +29,6 @@
     "format": "prettier --write .",
     "lint": "eslint ."
   },
-  "devDependencies": {
-    "eslint-find-rules": "^3.6.1"
-  },
   "peerDependencies": {
     "eslint": "^7.27.0",
     "prettier": "^2.3.0"
