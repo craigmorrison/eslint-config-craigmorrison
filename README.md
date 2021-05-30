@@ -10,7 +10,11 @@ npm install @craigmorrison/eslint-config --save-dev
 
 ### Configure with ESLint
 
+Add the required packages to the `extends` object in your ESLint config file.
+
 #### Base
+
+You should always import the base config.
 
 ```json
 {
@@ -19,6 +23,8 @@ npm install @craigmorrison/eslint-config --save-dev
 ```
 
 #### Add other packages as needed
+
+For additional features, add the relevant files.
 
 ```json
 {
@@ -33,7 +39,7 @@ npm install @craigmorrison/eslint-config --save-dev
 
 ### Configure Prettier with the included config
 
-Write a prettier config in JavaScript (e.g. `prettier.config.js`) and spread the imported config object into the one for you project. You can add any overrides or additional rules on subsequent lines.
+Write a prettier config file in JavaScript (e.g. `prettier.config.js`) and spread the imported config object into the one for you project. You can add any overrides or additional rules on subsequent lines.
 
 ```js
 'use strict';
