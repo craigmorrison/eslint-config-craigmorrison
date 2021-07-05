@@ -1,6 +1,6 @@
 {
   "name": "@craigmorrison/eslint-config",
-  "version": "0.11.5",
+  "version": "0.11.6",
   "description": "Craig Morrison's personal ESLint config",
   "author": "Craig Morrison",
   "license": "MIT",
@@ -25,7 +25,6 @@
     "config"
   ],
   "scripts": {
-    "build": "node ./config/build.mjs",
     "format": "prettier --write .",
     "lint": "eslint ."
   },
