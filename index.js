@@ -286,6 +286,8 @@ module.exports = {
     'no-useless-computed-key': 'error',
     // No unnecessary class constructors
     'no-useless-constructor': 'error',
+    // No unused private class members
+    'no-unused-private-class-members': 'error',
     // No useless escapes
     'no-useless-escape': 'error',
     // No useless renames when importing, exporting or destructuring
@@ -324,6 +326,8 @@ module.exports = {
     'require-unicode-regexp': 'off',
     // Need to review options
     'func-names': ['error', 'as-needed'],
+    // Prefer has-own (Requires ES2022)
+    'prefer-object-has-own': 'off',
 
     /*
      * ================================================================
