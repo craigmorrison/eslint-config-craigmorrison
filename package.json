@@ -1,6 +1,6 @@
 {
   "name": "@craigmorrison/eslint-config",
-  "version": "0.13.0",
+  "version": "0.14.0",
   "description": "Craig Morrison's personal ESLint config",
   "author": "Craig Morrison",
   "license": "MIT",
