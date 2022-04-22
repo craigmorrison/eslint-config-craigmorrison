@@ -12,7 +12,7 @@ module.exports = {
   },
   extends: ['plugin:jest/all'],
   rules: {
-    'jest/lowercase-name': ['error', { ignoreTopLevelDescribe: true }],
+    'jest/lowercase-title': ['error', { ignore: ['describe'] }],
     'jest/prefer-expect-assertions': 'off'
   }
 };
