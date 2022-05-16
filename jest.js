@@ -4,13 +4,18 @@ module.exports = {
   env: {
     'jest/globals': true
   },
-  plugins: ['jest'],
   settings: {
     jest: {
-      version: 26
+      version: 27
     }
   },
-  extends: ['plugin:jest/all'],
+  overrides: [
+    {
+      files: ["*.test.js", "*.spec.js", "*.test.ts", "*.spec.ts", "*.test.tsx", "*.spec.tsx"],
+      plugins: ["jest"],
+      extends: ['plugin:jest/all'],
+    }
+  ],
   rules: {
     'jest/prefer-lowercase-title': ['error', { ignore: ['describe'] }],
     'jest/prefer-expect-assertions': 'off'

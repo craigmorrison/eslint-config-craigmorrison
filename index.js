@@ -2,7 +2,7 @@
 
 module.exports = {
   parserOptions: {
-    ecmaVersion: 2021,
+    ecmaVersion: 2022,
     sourceType: 'module'
   },
   env: {
@@ -10,7 +10,8 @@ module.exports = {
     node: true,
     es2021: true
   },
-  extends: ['eslint:recommended', 'prettier'],
+  plugin: ['import'],
+  extends: ['eslint:recommended', 'prettier', 'plugin:import/recommended'],
   rules: {
     /*
      * ========
@@ -117,12 +118,12 @@ module.exports = {
     // Case statements must be unique
     'no-duplicate-case': 'error',
     // Don't import from the same module twice
-    'no-duplicate-imports': 'error',
+    'no-duplicate-imports': 'off',
+    "import/no-duplicates": ["error", { "considerQueryString": true }],
     // Don't use return within else blocks, return outside the if-else
     'no-else-return': 'error',
     // No empty blocks
     'no-empty': 'error',
-
     // No empty functions
     'no-empty-function': 'error',
     // No empty destructuring patterns
@@ -222,8 +223,8 @@ module.exports = {
     'no-script-url': 'error',
     // Use isNaN rather than comparators to check NaN
     'use-isnan': 'error',
-    // Disallow use of undefined as a variable
-    'no-undefined': 'error',
+    // Allow use of undefined as a variable
+    'no-undefined': 'off',
     // No unreachable code
     'no-unreachable': 'error',
     // No loops with one iteration
@@ -302,14 +303,17 @@ module.exports = {
     'prefer-promise-reject-errors': 'error',
     // No assignments that can lead to race conditions if using await or yield
     'require-atomic-updates': 'error',
-    // No async without await
-    'require-await': 'error',
+    /**
+     * Allow async functions without await 
+     * see: https://github.com/airbnb/javascript/issues/2013
+     */ 
+    "require-await": "off",
     // No generators without yield
     'require-yield': 'error',
     // No debugger keyword (probably a mistake to commit)
     'no-debugger': 'error',
-    // No console use by default (re-enable for Node.js on file/project level)
-    'no-console': 'error',
+    // No console.log (allow other types for deliberate purposes)
+    "no-console": ["error", { allow: ["info", "warn", "error"] }],
 
     /*
      * ============
@@ -364,8 +368,8 @@ module.exports = {
     'max-statements-per-line': ['error', { max: 1 }],
     // Comments don't need to be capitalized
     'capitalized-comments': 'off',
-    // Always space before comments
-    'spaced-comment': ['error', 'always'],
+    // Always space before comments, allow /// in TypeScript
+    "spaced-comment": ["error", "always", { "markers": ["/"] }],
     // No dangling underscores in identifiers
     'no-underscore-dangle': 'error',
     // No restricted global list
@@ -377,7 +381,7 @@ module.exports = {
     // No restricted export name list
     'no-restricted-exports': 'off',
     // Prefer object literal shorthands
-    'object-shorthand': ['error', 'consistent-as-needed'],
+    "object-shorthand": ["error", "always"],
     // No operator shorthands (x = x / y) over (x /= y)
     'operator-assignment': ['error', 'never'],
     // Prefer the ES2016 exponential operator over Math.pow()

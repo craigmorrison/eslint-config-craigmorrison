@@ -1,6 +1,6 @@
 {
   "name": "@craigmorrison/eslint-config",
-  "version": "0.15.0",
+  "version": "0.16.0",
   "description": "Craig Morrison's personal ESLint config",
   "author": "Craig Morrison",
   "license": "MIT",
@@ -37,6 +37,7 @@
     "@typescript-eslint/parser": "^5.20.0",
     "eslint": "^8.14.0",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jest": "^26.1.4",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.29.4",
