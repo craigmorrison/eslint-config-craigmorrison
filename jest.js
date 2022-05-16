@@ -11,13 +11,27 @@ module.exports = {
   },
   overrides: [
     {
-      files: ["*.test.js", "*.spec.js", "*.test.ts", "*.spec.ts", "*.test.tsx", "*.spec.tsx"],
-      plugins: ["jest"],
-      extends: ['plugin:jest/all'],
+      files: [
+        '*.test.js',
+        '*.spec.js',
+        '*.test.ts',
+        '*.spec.ts',
+        '*.test.tsx',
+        '*.spec.tsx'
+      ],
+      plugins: ['jest'],
+      extends: ['plugin:jest/all']
     }
   ],
   rules: {
     'jest/prefer-lowercase-title': ['error', { ignore: ['describe'] }],
-    'jest/prefer-expect-assertions': 'off'
+    'jest/prefer-expect-assertions': [
+      'error',
+      {
+        onlyFunctionsWithAsyncKeyword: true,
+        onlyFunctionsWithExpectInLoop: true,
+        onlyFunctionsWithExpectInCallback: true
+      }
+    ]
   }
 };
