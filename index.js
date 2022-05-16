@@ -10,7 +10,7 @@ module.exports = {
     node: true,
     es2021: true
   },
-  plugin: ['import'],
+  plugins: ['import'],
   extends: ['eslint:recommended', 'prettier', 'plugin:import/recommended'],
   rules: {
     /*
