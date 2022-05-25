@@ -119,7 +119,13 @@ module.exports = {
     'no-duplicate-case': 'error',
     // Don't import from the same module twice
     'no-duplicate-imports': 'off',
-    "import/no-duplicates": ["error", { "considerQueryString": true }],
+    // Disallow duplicate imports
+    'import/no-duplicates': ['error', { considerQueryString: true }],
+    // Error on unresolved imports, exempt asset imports
+    'import/no-unresolved': [
+      'error',
+      { ignore: ['\\.(css|md|mdx|svg|json)$'] }
+    ],
     // Don't use return within else blocks, return outside the if-else
     'no-else-return': 'error',
     // No empty blocks
@@ -304,16 +310,16 @@ module.exports = {
     // No assignments that can lead to race conditions if using await or yield
     'require-atomic-updates': 'error',
     /**
-     * Allow async functions without await 
+     * Allow async functions without await
      * see: https://github.com/airbnb/javascript/issues/2013
-     */ 
-    "require-await": "off",
+     */
+    'require-await': 'off',
     // No generators without yield
     'require-yield': 'error',
     // No debugger keyword (probably a mistake to commit)
     'no-debugger': 'error',
     // No console.log (allow other types for deliberate purposes)
-    "no-console": ["error", { allow: ["info", "warn", "error"] }],
+    'no-console': ['error', { allow: ['info', 'warn', 'error'] }],
 
     /*
      * ============
@@ -369,7 +375,7 @@ module.exports = {
     // Comments don't need to be capitalized
     'capitalized-comments': 'off',
     // Always space before comments, allow /// in TypeScript
-    "spaced-comment": ["error", "always", { "markers": ["/"] }],
+    'spaced-comment': ['error', 'always', { markers: ['/'] }],
     // No dangling underscores in identifiers
     'no-underscore-dangle': 'error',
     // No restricted global list
@@ -381,7 +387,7 @@ module.exports = {
     // No restricted export name list
     'no-restricted-exports': 'off',
     // Prefer object literal shorthands
-    "object-shorthand": ["error", "always"],
+    'object-shorthand': ['error', 'always'],
     // No operator shorthands (x = x / y) over (x /= y)
     'operator-assignment': ['error', 'never'],
     // Prefer the ES2016 exponential operator over Math.pow()
